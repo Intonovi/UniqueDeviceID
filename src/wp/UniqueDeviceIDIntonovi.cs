@@ -6,7 +6,7 @@ using WPCordovaClassLib.Cordova.JSON;
 
 namespace WPCordovaClassLib.Cordova.Commands
 {
-    public class UniqueDeviceID : BaseCommand
+    public class UniqueDeviceIDIntonovi : BaseCommand
     {
         public void get(string options)
         {

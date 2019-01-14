@@ -1,13 +1,13 @@
 //
-//  CDVUniqueDeviceID.m
+//  CDVUniqueDeviceIDIntonovi.m
 //
 //
 //
 
-#import "CDVUniqueDeviceID.h"
+#import "CDVUniqueDeviceIDIntonovi.h"
 #import "UICKeyChainStore.h"
 
-@implementation CDVUniqueDeviceID
+@implementation CDVUniqueDeviceIDIntonovi
 
 -(void)get:(CDVInvokedUrlCommand*)command
 {

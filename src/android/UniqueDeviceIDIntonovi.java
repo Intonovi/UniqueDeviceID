@@ -15,9 +15,9 @@ import android.util.Log;
 
 import java.lang.reflect.Method;
 
-public class UniqueDeviceID extends CordovaPlugin {
+public class UniqueDeviceIDIntonovi extends CordovaPlugin {
 
-    public static final String TAG = "UniqueDeviceID";
+    public static final String TAG = "UniqueDeviceIDIntonovi";
     public CallbackContext callbackContext;
     public static final int REQUEST_READ_PHONE_STATE = 0;
 
@@ -27,16 +27,7 @@ public class UniqueDeviceID extends CordovaPlugin {
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         this.callbackContext = callbackContext;
         try {
-            if (action.equals("get")) {
-                if(this.hasPermission(permission)){
-                    getDeviceId();
-                }else{
-                    this.requestPermission(this, REQUEST_READ_PHONE_STATE, permission);
-                }
-            }else {
-                this.callbackContext.error("Invalid action");
-                return false;
-            }
+            getDeviceId();
         }catch(Exception e ) {
             this.callbackContext.error("Exception occurred: ".concat(e.getMessage()));
             return false;
@@ -55,29 +46,13 @@ public class UniqueDeviceID extends CordovaPlugin {
     protected void getDeviceId(){
         try {
             Context context = cordova.getActivity().getApplicationContext();
-            TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
 
             String uuid;
-            String androidID = Secure.getString(context.getContentResolver(), Secure.ANDROID_ID);
-            String deviceID = tm.getDeviceId();
-            String simID = tm.getSimSerialNumber();
-
-            if ("9774d56d682e549c".equals(androidID) || androidID == null) {
-                androidID = "";
-            }
-
-            if (deviceID == null) {
-                deviceID = "";
-            }
-
-            if (simID == null) {
-                simID = "";
-            }
-
-            uuid = androidID + deviceID + simID;
+            uuid = Secure.getString(context.getContentResolver(), Secure.ANDROID_ID);
+            
             uuid = String.format("%32s", uuid).replace(' ', '0');
-            uuid = uuid.substring(0, 32);
-            uuid = uuid.replaceAll("(\\w{8})(\\w{4})(\\w{4})(\\w{4})(\\w{12})", "$1-$2-$3-$4-$5");
+            // uuid = uuid.substring(0, 32);
+            // uuid = uuid.replaceAll("(\\w{8})(\\w{4})(\\w{4})(\\w{4})(\\w{12})", "$1-$2-$3-$4-$5");
 
             this.callbackContext.success(uuid);
         }catch(Exception e ) {

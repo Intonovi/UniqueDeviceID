@@ -1,5 +1,5 @@
 //
-//  CDVUniqueDeviceID.h
+//  CDVUniqueDeviceIDIntonovi.h
 //
 //
 //
@@ -7,7 +7,7 @@
 #import <Foundation/Foundation.h>
 #import <Cordova/CDVPlugin.h>
 
-@interface CDVUniqueDeviceID : CDVPlugin
+@interface CDVUniqueDeviceIDIntonovi : CDVPlugin
 
 - (void)get:(CDVInvokedUrlCommand*)command;
 
