@@ -13,7 +13,7 @@
     <license>MIT</license>
     <keywords>phonegap,cordova,android,ios,wp,Windows,phone,device,id,uuid,unique</keywords>
 
-    <js-module src="www/uniqueid.js" name="UniqueDeviceIDIntonovi">
+    <js-module src="www/uniqueidintonovi.js" name="UniqueDeviceIDIntonovi">
         <merges target="window.plugins.UniqueDeviceIDIntonovi" />
     </js-module>
 
